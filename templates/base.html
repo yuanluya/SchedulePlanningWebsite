@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <title>title for you pages</title>
+    {% endblock %}
+  </head>
+  <body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+      {% block footer %}
+      {% endblock %}
+    </div>
+  </body>
+</html>
