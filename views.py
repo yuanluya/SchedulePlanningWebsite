@@ -6,8 +6,8 @@ from schedule_api import get_terms
 def index():
     options = {}
     try:
-    	options['terms'] = get_terms()
+        options['terms'] = get_terms()
     except:
-    	options['api_error'] = True
+        options['api_error'] = True
 
     return render_template('index.html', **options)
