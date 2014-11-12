@@ -1,5 +1,5 @@
-### Team Name: (your team name here)
-### Team Members:
+### Team (your team name here)
+### Team Members
 * first_name last_name (uniqname)
 * first_name last_name (uniqname)
 * first_name last_name (uniqname)
