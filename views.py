@@ -2,7 +2,11 @@
 from flask import render_template, request
 from app import app
 from schedule_api import *
+<<<<<<< HEAD
 import time
+=======
+import ast
+>>>>>>> origin/master
 
 @app.route('/')
 def index():
@@ -49,7 +53,10 @@ def test(termCode, schoolCode, subjectCode):
 @app.route('/terms/<termCode>/<schoolCode>/')
 def viewClasses(termCode, schoolCode):
     test=[]
+<<<<<<< HEAD
     help = []
+=======
+>>>>>>> origin/master
     options = {}
     options['i'] = 1
     options['termcode'] = termCode
@@ -72,6 +79,7 @@ def viewClasses(termCode, schoolCode):
             test.index(request.args['catalogNumber'])
         except ValueError:
             options['catalogNumber'] = -1
+<<<<<<< HEAD
             return render_template('coreSearch.html', **options)
         options['className'] = get_className(termCode, schoolCode, request.args['subject'], request.args['catalogNumber'])
         try:
@@ -145,5 +153,16 @@ def viewClasses(termCode, schoolCode):
                 elif type(help) == type({}):
                     if int(help['CreditHours'][0]) == int(request.args['credit']) and int(catalogNumber['CatalogNumber'][0]) == int(request.args['courseLevel']):
                         options['sections'].append(catalogNumber)'''
+=======
+        options['className'] = get_className(termCode, schoolCode, request.args['subject'], request.args['catalogNumber'])
+        try:
+            options['sections'] = get_classSections(termCode, schoolCode, request.args['subject'], request.args['catalogNumber'])
+        except:
+            options['api_error1'] = True
+    else:
+        options['sections'] = {}
+        for catalogNumber in options['catalogNumbers']:
+            options['sections'][catalogNumber['CatalogNumber']] = get_className(termCode, schoolCode, 'EECS', '203')
+>>>>>>> origin/master
 
     return render_template('coreSearch.html', **options)

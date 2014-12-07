@@ -85,12 +85,16 @@ def get_subjects(termCode, schoolCode):
     Each item in the list is a dictionary containing:
     ['SubjectCode', 'SubjectDescr', 'SubjectShorDescr']
     '''
+<<<<<<< HEAD
     if type(get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject']) == type([]):
         return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject']
     else:
         help = []
         help.append(get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject'])
         return help
+=======
+    return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject']
+>>>>>>> origin/master
 
 def get_classNumbers(termCode, SubjectCode):
     '''
@@ -124,12 +128,16 @@ def get_className(termCode, SchoolCode, SubjectCode, catalogNumber):
     Return the name of the course
     '''
     descr = get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+SchoolCode+'/Subjects/'+SubjectCode+'/CatalogNbrs/'+catalogNumber)['getSOCCourseDescrResponse']['CourseDescr']
+<<<<<<< HEAD
     try:
         name = descr[0:descr.index('-')-1]
     except ValueError:
         name = descr
         if name.find('\n') != -1: 
             name = name[0:name.find('\n')-1]
+=======
+    name = descr[0:descr.index('-')-1]
+>>>>>>> origin/master
     return name
 
 def get_classDescr(termCode, SchoolCode, SubjectCode, catalogNumber):
@@ -139,6 +147,7 @@ def get_classDescr(termCode, SchoolCode, SubjectCode, catalogNumber):
     descr = get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+SchoolCode+'/Subjects/'+SubjectCode+'/CatalogNbrs/'+catalogNumber)['getSOCCourseDescrResponse']['CourseDescr']
     Descr = descr[descr.index('-')+4:]
     return Descr
+<<<<<<< HEAD
 
 def get_basicClassInfo(termCode, SchoolCode, SubjectCode, catalogNumber):
     '''
@@ -157,3 +166,5 @@ def get_basicClassInfo(termCode, SchoolCode, SubjectCode, catalogNumber):
     pack['SectionType'] = listX['SectionType']
 
     return pack
+=======
+>>>>>>> origin/master
