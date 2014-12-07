@@ -1,0 +1,113 @@
+#image
+{
+	border-radius: 7px;
+	border: #FFCD0A;
+	background-color: #0E284B;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	height: 100px;
+	vertical-align: middle;
+	text-align: center;
+}
+#badge
+{
+	margin-top: 5px;
+	width:75px;
+	margin-top: 0px;
+	margin-left: 3px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	float: left;
+}
+#Heading
+{
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	margin-left: 20%;
+}
+#calender
+{
+	margin-top: 1%;
+	width: 54%;
+	height: 345px;
+	margin-right: 0px;
+	margin-bottom: 2%;
+	float:left;
+}
+#selection
+{
+	width:25%;
+	margin-top: 1%;
+	margin-right: 2%;
+	margin-left: 2%;
+	float: left;
+}
+#subject
+{
+	margin-left: 10%;
+}
+#catalogNumber
+{
+	margin-left: 10%;
+}
+#controlPanel
+{
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+#submit
+{
+	text-align: center;
+	margin-right: 5%;
+}
+#reset
+{
+	margin-right: 0px;
+}
+#links
+{
+	text-align: center;
+	border-radius: 5px;
+	background-color: #EEEEEE;
+	margin-top: 1%;
+	float:left;
+	width:17%;
+	height:100%;
+}
+#List
+{
+	margin-top:0px; 
+	margin-bottom: 2%;
+	margin-right: 1.5%;
+	float:left;
+	width:81%;
+	height:360px;
+	border-radius: 5px;
+	background-color: #EEEEEE;
+}
+#courseList
+{
+	height:356px;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-top: 2px;
+	margin-bottom:2px;
+	overflow: auto;
+}
+.name
+{
+	width:70%;
+	margin-bottom: 0px;
+	margin-top:2%;
+	margin-right: 0;
+	float:left;
+}
+#books
+{
+	float:right;
+	width: 194px;
+}

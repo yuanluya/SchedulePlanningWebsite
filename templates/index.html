@@ -1,15 +1,55 @@
+
 {% extends "base.html" %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="/static/homepagestyle.css"/>
+<div class="container" id="canvass">
+  <div id="Title" class="jumbotron">
+    <div id="badge">
+  	  <img src="/static/schoolBadge.jpg" width="150" height="166" align="center">
+    </div>
+    <div id="space" class="jumbtron">
 
-<h1> Welcome to your starter code! </h1>
-Do some experimenting and make some changes.
+    </div>
+    <div id="image" class="jumbotron">
+        <!--<img id="picture" src="/static/scenario.jpg" width="440" height="288" vspace="40">-->
+    </div>
+  	<h2 ><font color="#FFFFFF"><strong>WELCOME TO A++ Schedule Planner Website</strong></h2>
+  </div>
+  <div id="bigChoice">
+    <div id="block2">
 
-<br><h2> The terms returned from the schedule API are: </h3>
-{% for term in terms %}
-    {{ term['TermDescr'] }}<br>
-{% endfor %}
-
+    </div>
+  <div id="choice" class="row">
+    <div style="text-align: center;">
+      {% for term in terms %}
+        <div class="col-sm-6 col-md-3" id="term{{term['TermCode']}}">
+          <div class="thumbnail" style="width:111px; height:77px;">
+            {% if term['TermCode'] == "2020" %}
+              <img src="/static/Angel.jpg">
+            {% else %}
+              <img src="/static/Hatcher.jpg" id="Hatcher">
+            {% endif %}
+          </div>
+          <div class="caption">
+            <a href="/terms/{{term['TermCode']}}"  target="_blank">
+              {% if term['TermCode'] == "2020" %}
+                <button type="button" class="btn btn-primary" role="button">
+    		          {{ term['TermShortDescr'] }}
+                </button>
+              {% else %}
+                <button type="button" class="btn btn-danger" role="button">
+                  {{ term['TermShortDescr'] }}
+                </button>
+              {% endif %}
+            </a>
+          </div>
+         </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
 {% if api_error %}
 <b>Getting the API terms failed!</b>
 Did you set the API token?

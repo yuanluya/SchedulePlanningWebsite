@@ -69,3 +69,91 @@ def get_terms():
         ('TermCode', 'TermDescr', 'TermShortDescr') 
     '''
     return get_data('/Curriculum/SOC/v1/Terms')['getSOCTermsResponse']['Term']
+
+def get_schools(termCode):
+    '''
+    Returns a list of valid schools.
+    Each item in the list is a dictionary containing:
+        ('SchoolCode', 'SchoolDescr', 'SchoolShortDescr') 
+    '''
+    return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools')['getSOCSchoolsResponse']['School']
+
+
+def get_subjects(termCode, schoolCode):
+    '''
+    Return a list of valid subjects(criteria)
+    Each item in the list is a dictionary containing:
+    ['SubjectCode', 'SubjectDescr', 'SubjectShorDescr']
+    '''
+    if type(get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject']) == type([]):
+        return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject']
+    else:
+        help = []
+        help.append(get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject'])
+        return help
+
+def get_classNumbers(termCode, SubjectCode):
+    '''
+    Return a list of valid class
+    Each item in the list is a dictionary
+    '''
+    return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Classes/Search/'+SubjectCode)['searchSOCClassesResponse']['SearchResult']
+
+def get_classDetailsByClassnumbers(termCode, classNumber):
+    '''
+    Return details of valid class
+    '''
+    return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Classes/'+classNumber)['getSOCSectionListByNbrResponse']['ClassOffered']
+
+def get_catalogNumbers(termCode, schoolCode, subjectCode):
+    '''
+    Return a list of valid catalogNumbers
+    Each item in the list is a dictionary
+    '''
+    return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects/'+subjectCode+'/CatalogNbrs')['getSOCCtlgNbrsResponse']['ClassOffered']
+
+def get_classSections(termCode, SchoolCode, SubjectCode, catalogNumber):
+    '''
+    Return a list of valid sections and their details of particular section.
+    Each item in the list is a dictionary
+    '''
+    return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+SchoolCode+'/Subjects/'+SubjectCode+'/CatalogNbrs/'+catalogNumber+'/Sections')['getSOCSectionsResponse']['Section']
+
+def get_className(termCode, SchoolCode, SubjectCode, catalogNumber):
+    '''
+    Return the name of the course
+    '''
+    descr = get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+SchoolCode+'/Subjects/'+SubjectCode+'/CatalogNbrs/'+catalogNumber)['getSOCCourseDescrResponse']['CourseDescr']
+    try:
+        name = descr[0:descr.index('-')-1]
+    except ValueError:
+        name = descr
+        if name.find('\n') != -1: 
+            name = name[0:name.find('\n')-1]
+    return name
+
+def get_classDescr(termCode, SchoolCode, SubjectCode, catalogNumber):
+    '''
+    Return the name of the course
+    '''
+    descr = get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+SchoolCode+'/Subjects/'+SubjectCode+'/CatalogNbrs/'+catalogNumber)['getSOCCourseDescrResponse']['CourseDescr']
+    Descr = descr[descr.index('-')+4:]
+    return Descr
+
+def get_basicClassInfo(termCode, SchoolCode, SubjectCode, catalogNumber):
+    '''
+    Return a list of basic information of a course
+    '''
+    try:
+        list1 = get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+SchoolCode+'/Subjects/'+SubjectCode+'/CatalogNbrs/'+catalogNumber+'/Sections')['getSOCSectionsResponse']['Section']
+        listX = list1[0]
+    except KeyError:
+        listX = list1
+    name = get_className(termCode, SchoolCode, SubjectCode, catalogNumber)
+    pack = {}
+    pack['SectionName'] = name
+    pack['CreditHours'] = listX['CreditHours']
+    pack['CatalogNumber'] = catalogNumber
+    pack['SectionType'] = listX['SectionType']
+
+    return pack

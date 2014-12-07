@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for catalog in catalogNumbers %}
+	{{catalog['CatalogNumber']}} 
+{% endfor %}
+
+{% if api_error %}
+    there is something wrong
+{% endif %}
+
+{% endblock %}

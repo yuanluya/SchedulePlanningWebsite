@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/coreSearchStyle.css" type="text/css">
+
+<div class="container" id="canvass">
+	<div id="image">
+		<div style="height:7px;">
+	    </div>
+		<div id="badge">
+			<img src="/static/schoolBadge.jpg" height="80px" align="center">
+		</div>
+        <div id="Heading">
+             <font color="FFFFFF"><h1> A++ Schedule Planner Website</h1></font>
+        </div>
+	</div>
+
+	<div class="jumbotron" id="calender">
+		GOOGLE CALENDER
+	</div>
+	<div class="panel panel-default" id="selection">
+		<div class="panel-heading">
+			<strong>Search criteria</strong>
+		</div>
+		<div class="panel-body" id="searchBody">
+			<div class="form-group" id="form">
+		        <form method="get" action="/terms/{{termcode}}/{{schoolcode}}/" id="list1">
+                    <div>Subject:</div>
+    		        <div class="col-sm-10" id="subject">
+    		            <select name="subject" class="form-control">
+    			            <option value="">(Required)</option>
+    			           {% for subject in subjects %}
+    			                <option value="{{subject['SubjectCode']}}">({{subject['SubjectShortDescr']}}) {{subject['SubjectDescr']}}</option>
+    			           {% endfor %}
+    		            </select>
+    	            </div>
+    			    <div>CatalogNumber:</div>
+    		        <div class="col-sm-10" id="catalogNumber">
+    		            <input name="catalogNumber" type="text" class="form-control" placeholder=" " id="choiceOfSubjects"/>
+    		        </div>
+    		        <div>Course Level:</div>
+    		        <div class="col-sm-10" id="subject">
+    		            <select name="courseLevel" class="form-control">
+    			            <option value=""> </option>
+    			           {% for num in range(1,5) %}
+    			                <option value="{{num}}">{{num}}00</option>
+    			           {% endfor %}
+    			           <option value="5">500+</option>
+    		            </select>
+    		        </div>
+    		        <div>Credit Hours:</div>
+    		        <div class="col-sm-10" id="subject">
+    		            <select name="credit" class="form-control">
+    			            <option value=""> </option>
+    			           {% for num in range(1,5) %}
+    			                <option value="{{num}}">{{num}}</option>
+    			           {% endfor %}
+    			           <option value="5">5+</option>
+    		            </select>
+    		        </div>
+    		        <br>
+    				<br>
+    				<div id="controlPanel">
+    		    		<input type="submit" value="Search" class="btn btn-primary" role="button" id="submit">
+    		    		<input type="reset" value="Reset" class="btn btn-danger" role="button" id="reset">
+    				</div>
+    	        </form>
+	    	</div>
+		</div>
+	</div>
+	<div id="links">
+		<br>
+        <a href="/">Term selection</a>
+        <br>
+        <br>
+        <a href="/terms/2020">School selection in Winter</a>
+        <br>
+        <br>
+        <a href="/terms/2010">School selection in Fall</a>
+        <br>
+        <br>
+        <a href="http://www.umich.edu">Home Page of Michigan</a>
+        <br>
+        <br>
+        <a href="https://wolverineaccess.umich.edu/f/u24l1s13/normal/render.uP">Wolverine Access</a>
+        <br>
+        <br>
+        <a href="http://www.lsa.umich.edu/students/academicsrequirements/majorsminors" target="_blank">LSA Majors and Minors</a>
+        <br>
+        <br>
+        <a href="http://ro.umich.edu/calendar/">Academic Calendar</a>
+        <br>
+        <br>
+        <a href="https://http://www.ratemyprofessors.com/"> Rate my professor</a> 
+        <br>   
+        <br>
+	</div>
+    <div id="books">
+        <img src="/static/books.jpg" width="194px" height="360px" class="img-rounded">
+    </div>
+	<div id="List">
+		<div id="courseList">
+            {% if catalogNumber == -1 %}
+                <div style="height: 150px; width: 2px">
+                </div>
+                <div class="alert alert-danger">
+                    Enter valid catalog number to start search!
+                </div>
+            {% elif catalogNumber != '' %}
+                {% for section in sections %}
+                    {% if (i % 2) == 1 %}
+                        <div class="alert alert-warning" style="background-color: #FFFFFF; border: 2px solid #EEEEEE">
+                            <div>
+                                <div class="name" style="height:15px; margin-top:0px;">
+                                    <a href="/term/{{termcode}}/{{schoolcode}}/{{subject}}/{{catalogNumber}}/{{section['SectionNumber']}}">
+                                        <h5 style="width:110%; margin-right:10%; margin-top:1%; margin-bottom:0px;">{{subject}} {{catalogNumber}} - <strong>{{className}}</strong>
+                                        </h5>
+                                    </a>
+                                    <h6 style="margin-right:0px; margin-top:1%; margin-bottom:0px;">
+                                        Section：{{section['SectionNumber']}} {{section['SectionType']}}
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Credits: {{section['CreditHours']}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{section['Meeting']['Instructors']}}
+                                    </h6>
+                                </div>
+                                <button type="button" class="btn btn-primary" style="margin-left:15%; margin-right: 4px;">add</button>
+                                <button type="button" class="btn btn-danger">delete</button>
+                            </div>
+                        </div>
+                        {% set i = i + 1 %}
+                    {% else %}
+                        <div class="alert alert-default" style="background-color: #EEEEEE;">
+                            <div>
+                                <div class="name" style="height:15px; margin-top:0px;">
+                                    <a href="/term/{{termcode}}/{{schoolcode}}/{{subject}}/{{catalogNumber}}/{{section['SectionNumber']}}">
+                                        <h5 style="width:110%; margin-right:10%; margin-top:1%; margin-bottom:0px;">{{subject}} {{catalogNumber}} - <strong>{{className}}</strong>
+                                        </h5>
+                                    </a>
+                                    <h6 style="margin-right:0px; margin-top:1%; margin-bottom:0px;">
+                                        Section: {{section['SectionNumber']}} {{section['SectionType']}}
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Credits: {{section['CreditHours']}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{section['Meeting']['Instructors']}}
+                                    </h6>
+                                </div>
+                                <button type="button" class="btn btn-primary" style="margin-left:15%; margin-right: 4px;">add</button>
+                                <button type="button" class="btn btn-danger">delete</button>
+                            </div>
+                        </div>
+                        {% set i = i + 1 %}
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% for section in sections %}
+                    {% if (i % 2) == 1 %}
+                        <div class="alert alert-warning" style="background-color: #FFFFFF; border: 2px solid #EEEEEE">
+                            <div>
+                                <div class="name" style="height:15px; margin-top:0px;">
+                                    <a href="/term/{{termcode}}/{{schoolcode}}/{{subject}}/{{section['CatalogNumber']}}/000">
+                                        <h5 style="width:110%; margin-right:10%; margin-top:1%; margin-bottom:0px;">{{subject}} {{section['CatalogNumber']}} - <strong>{{section['SectionName']}}</strong>
+                                        </h5>
+                                    </a>
+                                    <h6 style="margin-right:0px; margin-top:1%; margin-bottom:0px;"> 
+                                        Section: {{section['SectionType']}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCredits: {{section['CreditHours']}}
+                                    </h6>
+                                </div>
+                                <button type="button" class="btn btn-primary" style="margin-left:15%; margin-right: 4px;">add</button>
+                                <button type="button" class="btn btn-danger">delete</button>
+                            </div>
+                        </div>
+                        {% set i = i + 1 %}
+                    {% else %}
+                        <div class="alert alert-default" style="background-color: #EEEEEE;">
+                            <div>
+                                <div class="name" style="height:15px; margin-top:0px;">
+                                    <a href="/term/{{termcode}}/{{schoolcode}}/{{subject}}/{{section['CatalogNumber']}}/000">
+                                        <h5 style="width:110%; margin-right:10%; margin-top:1%; margin-bottom:0px;">
+                                            {{subject}} {{section['CatalogNumber']}} - <strong>{{section['SectionName']}}</strong>
+                                        </h5>
+                                    </a>
+                                    <h6 style="margin-right:0px; margin-top:1%; margin-bottom:0px;"> 
+                                        Section: {{section['SectionType']}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCredits: {{section['CreditHours']}}
+                                    </h6>
+                                </div>
+                                <button type="button" class="btn btn-primary" style="margin-left:15%; margin-right: 4px;">add</button>
+                                <button type="button" class="btn btn-danger">delete</button>
+                            </div>
+                        </div>
+                        {% set i = i + 1 %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
