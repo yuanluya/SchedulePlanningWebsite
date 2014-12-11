@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/static/firstSearchpage.css"/>
+<div class="container" id="canvass">
+    <div class="jumbotron" id="Title">
+    	<div id="badge">
+    		<img src="/static/schoolBadge.jpg" width="150" height="166">
+    	</div>
+    	<div class="form-group">
+    		<form method="get" action="/terms/2020/subjects/" id="list1">
+    		<label for="choiceOfSchools" class="col-sm-4 control-label" id="label1">
+    			<font color="FFCD0A">School:
+    		</label>
+    		<div class="col-sm-6">
+    		    <select name="school" class="form-control">
+    			    <option value="">Required</option>
+    			    {% for school in schools %}
+    			        <option value="{{school['SchoolCode']}}">{{school['SchoolShortDescr']}}</option>
+    			    {% endfor %}
+    		    </select>
+    	    </div>
+    		<br>
+    		<br>
+    		<label for="choiceOfSubjects" class="col-sm-4 control-label" id="label2">
+    			<font color="FFCD0A">Subject:
+    		</label>
+    		<div class="col-sm-6">
+                <select name="subject" class="form-control">
+                    <option value="">Required</option>
+                    {% for subject in subjects %}
+                        <option value="{{subject['SubjectCode']}}">{{subject['SubjectShortDescr']}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+    		<br>
+    		<br>
+    		<div id="controlPanel">
+    		    <input type="submit" value="Submit" class="btn btn-primary" role="button">
+    		    <input type="reset" value="Reset" class="btn btn-danger" role="button">
+    		</div>
+    	    </form>
+    	</div>
+    </div>
+</div>
+{% endblock %}

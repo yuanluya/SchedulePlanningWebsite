@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{catalogNumbers}}
+{{catalogNumbers['Abbreviation']}}
+{{catalogNumbers['StreetNumber']}}
+{{catalogNumbers['City']}}
+
+{% if api_error %}
+    there is something wrong
+{% endif %}
+
+{% endblock %}

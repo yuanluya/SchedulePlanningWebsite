@@ -1,0 +1,51 @@
+#image
+{
+	border-radius: 7px;
+	border: #FFCD0A;
+	background-color: #0E284B;
+	margin-top: 1%;
+	margin-bottom: 2.5%;
+	height: 100px;
+	vertical-align: middle;
+	text-align: center;
+}
+#badge
+{
+	margin-top: 5px;
+	width:75px;
+	margin-top: 0px;
+	margin-left: 3px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	float: left;
+}
+#Heading
+{
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	margin-left: 20%;
+}
+#details
+{
+	border-color:#ffcb0b;
+}
+#links
+{
+	border-color:#ffcb0b;
+}
+#textbook
+{
+	margin-bottom: 1%;
+	font-size: 12px;
+	border-color: #ffcb0b;
+}
+#teachers
+{
+	margin-bottom: 1%;
+	font-size: 12px;
+}
+#description
+{
+	margin-bottom: 1%;
+}

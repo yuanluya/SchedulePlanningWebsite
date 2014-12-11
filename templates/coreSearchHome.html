@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/coreSearchStyle.css" type="text/css">
+
+<div class="container" id="canvass">
+	<div id="image">
+		<div style="height:7px;">
+	    </div>
+		<div id="badge">
+			<img src="/static/schoolBadge.jpg" height="80px" align="center">  
+		</div>
+        <div id="Heading">
+             <font color="FFFFFF"><h1> A++ Schedule Planner Website</h1></font>
+        </div>
+	</div>
+
+	<div class="jumbotron" id="calender">
+		GOOGLE CALENDER
+	</div>
+	<div class="panel panel-default" id="selection">
+		<div class="panel-heading">
+			<strong>Search criteria</strong>
+		</div>
+		<div class="panel-body" id="searchBody">
+			<div class="form-group" id="form">
+		        <form method="get" action="/terms/{{termcode}}/{{schoolcode}}/" id="list1">
+                    <div>Subject:</div>
+    		        <div class="col-sm-10" id="subject">
+    		            <select name="subject" class="form-control">
+    			            <option value="">(Required)</option>
+    			           {% for subject in subjects %}
+    			                <option value="{{subject['SubjectCode']}}">({{subject['SubjectShortDescr']}}) {{subject['SubjectDescr']}}</option>
+    			           {% endfor %}
+    		            </select>
+    	            </div>
+    			    <div>CatalogNumber:</div>
+    		        <div class="col-sm-10" id="catalogNumber">
+    		            <input name="catalogNumber" type="text" class="form-control" placeholder=" " id="choiceOfSubjects"/>
+    		        </div>
+    		        <div>Course Level:</div>
+    		        <div class="col-sm-10" id="subject">
+    		            <select name="courseLevel" class="form-control">
+    			            <option value="0"> </option>
+    			           {% for num in range(1,5) %}
+    			                <option value="{{num}}">{{num}}00</option>
+    			           {% endfor %}
+    			           <option value="5">500+</option>
+    		            </select>
+    		        </div>
+    		        <div>Credit Hours:</div>
+    		        <div class="col-sm-10" id="subject">
+    		            <select name="credit" class="form-control">
+    			            <option value="0"> </option>
+    			           {% for num in range(1,5) %}
+    			                <option value="{{num}}">{{num}}</option>
+    			           {% endfor %}
+    			           <option value="5">5+</option>
+    		            </select>
+    		        </div>
+    		        <br>
+    				<br>
+    				<div id="controlPanel">
+    		    		<input type="submit" value="Search" class="btn btn-primary" role="button" id="submit">
+    		    		<input type="reset" value="Reset" class="btn btn-danger" role="button" id="reset">
+    				</div>
+    	        </form>
+	    	</div>
+		</div>
+	</div>
+	<div id="links">
+		<br>
+		<a href="/">Term selection</a>
+		<br>
+		<br>
+		<a href="/terms/2020">School selection in Winter</a>
+		<br>
+		<br>
+		<a href="/terms/2010">School selection in Fall</a>
+		<br>
+        <br>
+		<a href="http://www.umich.edu">Home Page of Michigan</a>
+		<br>
+        <br>
+        <a href="https://wolverineaccess.umich.edu/f/u24l1s13/normal/render.uP">Wolverine Access</a>
+        <br>
+        <br>
+        <a href="http://www.lsa.umich.edu/students/academicsrequirements/majorsminors" target="_blank">LSA Majors and Minors</a>
+        <br>
+        <br>
+        <a href="http://ro.umich.edu/calendar/">Academic Calendar</a>
+        <br>
+        <br>
+        <a href="https://www.ratemyprofessors.com/"> Rate my professor</a> 
+        <br>   
+        <br>
+	</div>
+    <div id="books">
+        <img src="/static/books.jpg" width="194px" height="360px" class="img-rounded">
+    </div>
+	<div id="List">
+		<div id="courseList">
+            <div style="height: 150px; width: 2px">
+
+            </div>
+            <div class="alert alert-danger" id="choice">
+                Enter subject and catalog in your school to start search!
+            </div>
+		</div>       
+	</div>
+</div>
+
+
+{% endblock %}
