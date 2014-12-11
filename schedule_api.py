@@ -140,18 +140,32 @@ def get_schools(termCode):
     '''
     return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools')['getSOCSchoolsResponse']['School']
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 def get_subjects(termCode, schoolCode):
     '''
     Return a list of valid subjects(criteria)
     Each item in the list is a dictionary containing:
     ['SubjectCode', 'SubjectDescr', 'SubjectShorDescr']
     '''
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     if type(get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject']) == type([]):
         return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject']
     else:
         help = []
         help.append(get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject'])
         return help
+<<<<<<< HEAD
+=======
+=======
+    return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+schoolCode+'/Subjects')['getSOCSubjectsResponse']['Subject']
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 def get_classNumbers(termCode, SubjectCode):
     '''
@@ -178,24 +192,38 @@ def get_classSections(termCode, SchoolCode, SubjectCode, catalogNumber):
     Return a list of valid sections and their details of particular section.
     Each item in the list is a dictionary
     '''
+<<<<<<< HEAD
     help1 = []
     help = get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+SchoolCode+'/Subjects/'+SubjectCode+'/CatalogNbrs/'+catalogNumber+'/Sections')['getSOCSectionsResponse']['Section']
     if type(help) == type({}):
         help1.append(help)
         return help1
     return help
+=======
+    return get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+SchoolCode+'/Subjects/'+SubjectCode+'/CatalogNbrs/'+catalogNumber+'/Sections')['getSOCSectionsResponse']['Section']
+>>>>>>> origin/master
 
 def get_className(termCode, SchoolCode, SubjectCode, catalogNumber):
     '''
     Return the name of the course
     '''
     descr = get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+SchoolCode+'/Subjects/'+SubjectCode+'/CatalogNbrs/'+catalogNumber)['getSOCCourseDescrResponse']['CourseDescr']
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     try:
         name = descr[0:descr.index('-')-1]
     except ValueError:
         name = descr
         if name.find('\n') != -1: 
             name = name[0:name.find('\n')-1]
+<<<<<<< HEAD
+=======
+=======
+    name = descr[0:descr.index('-')-1]
+>>>>>>> origin/master
+>>>>>>> origin/master
     return name
 
 def get_classDescr(termCode, SchoolCode, SubjectCode, catalogNumber):
@@ -203,6 +231,7 @@ def get_classDescr(termCode, SchoolCode, SubjectCode, catalogNumber):
     Return the name of the course
     '''
     descr = get_data('/Curriculum/SOC/v1/Terms/'+termCode+'/Schools/'+SchoolCode+'/Subjects/'+SubjectCode+'/CatalogNbrs/'+catalogNumber)['getSOCCourseDescrResponse']['CourseDescr']
+<<<<<<< HEAD
     try:
         Descr = descr[descr.index('-') + 4:]
     except ValueError:
@@ -211,6 +240,11 @@ def get_classDescr(termCode, SchoolCode, SubjectCode, catalogNumber):
         else:
             Descr = 'No available data right now'
     return Descr
+=======
+    Descr = descr[descr.index('-')+4:]
+    return Descr
+<<<<<<< HEAD
+>>>>>>> origin/master
 
 def get_basicClassInfo(termCode, SchoolCode, SubjectCode, catalogNumber):
     '''
@@ -229,6 +263,7 @@ def get_basicClassInfo(termCode, SchoolCode, SubjectCode, catalogNumber):
     pack['SectionType'] = listX['SectionType']
 
     return pack
+<<<<<<< HEAD
 
 def get_sectionInfo(termCode, SchoolCode, SubjectCode, catalogNumber, sectionNumber):
     '''
@@ -267,3 +302,7 @@ def get_location(buildingAbb):
         return get_Data('/Facilities/Buildings/v1/Buildings/' + buildingAbb)['Buildings']['Building']
     except:
         return "No data available"
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master

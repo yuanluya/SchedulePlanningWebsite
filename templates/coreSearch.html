@@ -41,7 +41,11 @@
     		        <div>Course Level:</div>
     		        <div class="col-sm-10" id="subject">
     		            <select name="courseLevel" class="form-control">
+<<<<<<< HEAD
     			            <option value="0"> </option>
+=======
+    			            <option value=""> </option>
+>>>>>>> origin/master
     			           {% for num in range(1,5) %}
     			                <option value="{{num}}">{{num}}00</option>
     			           {% endfor %}
@@ -51,7 +55,11 @@
     		        <div>Credit Hours:</div>
     		        <div class="col-sm-10" id="subject">
     		            <select name="credit" class="form-control">
+<<<<<<< HEAD
     			            <option value="0"> </option>
+=======
+    			            <option value=""> </option>
+>>>>>>> origin/master
     			           {% for num in range(1,5) %}
     			                <option value="{{num}}">{{num}}</option>
     			           {% endfor %}
@@ -82,7 +90,11 @@
         <a href="http://www.umich.edu">Home Page of Michigan</a>
         <br>
         <br>
+<<<<<<< HEAD
         <a href="https://wolverineaccess.umich.edu/f/u24l1s13/normal/render.uP" target="_blank">Wolverine Access</a>
+=======
+        <a href="https://wolverineaccess.umich.edu/f/u24l1s13/normal/render.uP">Wolverine Access</a>
+>>>>>>> origin/master
         <br>
         <br>
         <a href="http://www.lsa.umich.edu/students/academicsrequirements/majorsminors" target="_blank">LSA Majors and Minors</a>
@@ -91,7 +103,11 @@
         <a href="http://ro.umich.edu/calendar/">Academic Calendar</a>
         <br>
         <br>
+<<<<<<< HEAD
         <a href="http://www.ratemyprofessors.com/"> Rate my professor</a> 
+=======
+        <a href="https://http://www.ratemyprofessors.com/"> Rate my professor</a> 
+>>>>>>> origin/master
         <br>   
         <br>
 	</div>
@@ -106,18 +122,22 @@
                 <div class="alert alert-danger">
                     Enter valid catalog number to start search!
                 </div>
+<<<<<<< HEAD
             {% elif subject == '' %}
                 <div style="height: 150px; width: 2px">
                 </div>
                 <div class="alert alert-danger">
                     Enter subject please! We cannot access to much information!
                 </div>
+=======
+>>>>>>> origin/master
             {% elif catalogNumber != '' %}
                 {% for section in sections %}
                     {% if (i % 2) == 1 %}
                         <div class="alert alert-warning" style="background-color: #FFFFFF; border: 2px solid #EEEEEE">
                             <div>
                                 <div class="name" style="height:15px; margin-top:0px;">
+<<<<<<< HEAD
                                     <a href="/terms/{{termcode}}/{{schoolcode}}/{{subject}}/{{catalogNumber}}/{{section['SectionNumber']}}" target="_blank">
                                         <h5 style="width:110%; margin-right:10%; margin-top:1%; margin-bottom:0px;">{{subject}} {{catalogNumber}} - <strong>{{className}}</strong>
                                         </h5>
@@ -128,6 +148,16 @@
                                         <div class="col-sm-3" id="instructor2"><h6>{{section['Meeting']['Instructors']}}</h6></div>
                                         <div class="col-sm-4"><h6>{{section['Meeting']['Days']}}&nbsp&nbsp{{section['Meeting']['Times']}}</h6></div>
                                     </div>
+=======
+                                    <a href="/term/{{termcode}}/{{schoolcode}}/{{subject}}/{{catalogNumber}}/{{section['SectionNumber']}}">
+                                        <h5 style="width:110%; margin-right:10%; margin-top:1%; margin-bottom:0px;">{{subject}} {{catalogNumber}} - <strong>{{className}}</strong>
+                                        </h5>
+                                    </a>
+                                    <h6 style="margin-right:0px; margin-top:1%; margin-bottom:0px;">
+                                        Section：{{section['SectionNumber']}} {{section['SectionType']}}
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Credits: {{section['CreditHours']}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{section['Meeting']['Instructors']}}
+                                    </h6>
+>>>>>>> origin/master
                                 </div>
                                 <button type="button" class="btn btn-primary" style="margin-left:15%; margin-right: 4px;">add</button>
                                 <button type="button" class="btn btn-danger">delete</button>
@@ -138,6 +168,7 @@
                         <div class="alert alert-default" style="background-color: #EEEEEE;">
                             <div>
                                 <div class="name" style="height:15px; margin-top:0px;">
+<<<<<<< HEAD
                                     <a href="/terms/{{termcode}}/{{schoolcode}}/{{subject}}/{{catalogNumber}}/{{section['SectionNumber']}}" target="_blank">
                                         <h5 style="width:110%; margin-right:10%; margin-top:1%; margin-bottom:0px;">{{subject}} {{catalogNumber}} - <strong>{{className}}</strong>
                                         </h5>
@@ -148,6 +179,16 @@
                                         <div class="col-sm-3" id="instructors1"><h6>{{section['Meeting']['Instructors']}}</h6></div>
                                         <div class="col-sm-4"><h6>{{section['Meeting']['Days']}}&nbsp&nbsp{{section['Meeting']['Times']}}</h6></div>
                                     </div>
+=======
+                                    <a href="/term/{{termcode}}/{{schoolcode}}/{{subject}}/{{catalogNumber}}/{{section['SectionNumber']}}">
+                                        <h5 style="width:110%; margin-right:10%; margin-top:1%; margin-bottom:0px;">{{subject}} {{catalogNumber}} - <strong>{{className}}</strong>
+                                        </h5>
+                                    </a>
+                                    <h6 style="margin-right:0px; margin-top:1%; margin-bottom:0px;">
+                                        Section: {{section['SectionNumber']}} {{section['SectionType']}}
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Credits: {{section['CreditHours']}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{section['Meeting']['Instructors']}}
+                                    </h6>
+>>>>>>> origin/master
                                 </div>
                                 <button type="button" class="btn btn-primary" style="margin-left:15%; margin-right: 4px;">add</button>
                                 <button type="button" class="btn btn-danger">delete</button>
@@ -156,6 +197,7 @@
                         {% set i = i + 1 %}
                     {% endif %}
                 {% endfor %}
+<<<<<<< HEAD
                 <div class="alert alert-info" style="text-align: center;">
                     That's all we found!
                 </div>
@@ -569,6 +611,47 @@
                         </div>
                     {% endif %}
                 {% endif %}
+=======
+            {% else %}
+                {% for section in sections %}
+                    {% if (i % 2) == 1 %}
+                        <div class="alert alert-warning" style="background-color: #FFFFFF; border: 2px solid #EEEEEE">
+                            <div>
+                                <div class="name" style="height:15px; margin-top:0px;">
+                                    <a href="/term/{{termcode}}/{{schoolcode}}/{{subject}}/{{section['CatalogNumber']}}/000">
+                                        <h5 style="width:110%; margin-right:10%; margin-top:1%; margin-bottom:0px;">{{subject}} {{section['CatalogNumber']}} - <strong>{{section['SectionName']}}</strong>
+                                        </h5>
+                                    </a>
+                                    <h6 style="margin-right:0px; margin-top:1%; margin-bottom:0px;"> 
+                                        Section: {{section['SectionType']}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCredits: {{section['CreditHours']}}
+                                    </h6>
+                                </div>
+                                <button type="button" class="btn btn-primary" style="margin-left:15%; margin-right: 4px;">add</button>
+                                <button type="button" class="btn btn-danger">delete</button>
+                            </div>
+                        </div>
+                        {% set i = i + 1 %}
+                    {% else %}
+                        <div class="alert alert-default" style="background-color: #EEEEEE;">
+                            <div>
+                                <div class="name" style="height:15px; margin-top:0px;">
+                                    <a href="/term/{{termcode}}/{{schoolcode}}/{{subject}}/{{section['CatalogNumber']}}/000">
+                                        <h5 style="width:110%; margin-right:10%; margin-top:1%; margin-bottom:0px;">
+                                            {{subject}} {{section['CatalogNumber']}} - <strong>{{section['SectionName']}}</strong>
+                                        </h5>
+                                    </a>
+                                    <h6 style="margin-right:0px; margin-top:1%; margin-bottom:0px;"> 
+                                        Section: {{section['SectionType']}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCredits: {{section['CreditHours']}}
+                                    </h6>
+                                </div>
+                                <button type="button" class="btn btn-primary" style="margin-left:15%; margin-right: 4px;">add</button>
+                                <button type="button" class="btn btn-danger">delete</button>
+                            </div>
+                        </div>
+                        {% set i = i + 1 %}
+                    {% endif %}
+                {% endfor %}
+>>>>>>> origin/master
             {% endif %}
 		</div>
 	</div>
